@@ -1,0 +1,16 @@
+service: eventbridge-scheduler-service
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+
+functions:
+  hello:
+    handler: handler.hello
+    events:
+      - eventBridge:
+         schedule: rate(2 minutes)
+
+# you can add CloudFormation resource templates here
+resources:
+  Description: Serverless EventBridge Scheduler
